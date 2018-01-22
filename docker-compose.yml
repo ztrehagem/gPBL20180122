@@ -1,0 +1,13 @@
+version: '2'
+services:
+  tomcat:
+    image: tomcat:9.0
+    working_dir: /usr/local/tomcat
+    ports:
+      - 8080:8080
+    # links:
+    #   - db
+    # depends_on:
+    #   - db
+    volumes:
+      - ./webapp:/usr/local/tomcat/webapps
