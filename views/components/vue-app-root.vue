@@ -32,7 +32,8 @@ export default {
       this.submitting = true;
       console.log('request to get about', this.id);
       try {
-        this.response = await axios.get(`/hello?id=${this.id}`);
+        const { data } = await axios.get(`/hello?id=${this.id}`);
+        this.response = data;
       } catch (e) {
         this.response = e.response.data;
       }
