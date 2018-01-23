@@ -21,3 +21,6 @@ services:
       - ./gulpfile.js:/root/gulpfile.js:ro
       - ./views:/root/views:ro
       - ./webapp:/root/webapp
+  db:
+    image: mysql:5.7
+    
