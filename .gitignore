@@ -3,3 +3,6 @@ webapp/ROOT/**/*.html
 webapp/ROOT/**/*.css
 webapp/ROOT/**/*.js
 webapp/ROOT/**/*.map
+secrets/**/*
+
+!.gitkeep
