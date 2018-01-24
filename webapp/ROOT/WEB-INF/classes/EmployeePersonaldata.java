@@ -11,6 +11,8 @@ public class EmployeePersonaldata{
     private String birthday;
     private String address;
     
+
+    EmployeePersonaldata(){}
     EmployeePersonaldata( String employee_id /*String birthday,String address */) {
       this.employee_id = employee_id;
     /*    this.birthday = birthday;
@@ -53,8 +55,11 @@ public class EmployeePersonaldata{
             System.out.println("エラー・コード: " +((SQLException)e).getErrorCode());
           }
         }
-    }    
+    } 
 
+ public static    
+/*
+    
     public static void save() throws SQLException { 
         Connection conn;
         Statement stmt;
@@ -81,7 +86,7 @@ public class EmployeePersonaldata{
 　　        "FIELDS TERMINATED BY \',\' ENCLOSED BY \'\"\'"+
 　　        "LINES TERMINATED BY \'\r\n\'";
             stmt.execute(sql);*/
-            stmt.close();
+     /*       stmt.close();
             conn.close();
         } catch (Exception e) {
             System.out.print(e.toString());
@@ -90,5 +95,5 @@ public class EmployeePersonaldata{
                     ((SQLException)e).getErrorCode());
             }
         }
-    }
+    }*/
 }
