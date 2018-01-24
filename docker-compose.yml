@@ -5,10 +5,10 @@ services:
     working_dir: /usr/local/tomcat
     ports:
       - 8080:8080
-    # links:
-    #   - db
-    # depends_on:
-    #   - db
+    links:
+      - db
+    depends_on:
+      - db
     volumes:
       - ./webapp:/usr/local/tomcat/webapps
   node:
@@ -22,9 +22,10 @@ services:
       - ./views:/root/views:ro
       - ./webapp:/root/webapp
   db:
+    restart: always
     image: mysql:5.7
     working_dir: /root
     environment:
       MYSQL_ROOT_PASSWORD: password
     volumes:
-      - ./secrets:/root/secrets:ro
+    - ./secrets:/root/secrets
