@@ -1,7 +1,10 @@
-ALLSOURCE = *.java
+.SUFFIXES: .java .class
 JAVAC = /usr/bin/javac
-CLASSPATH := -classpath /usr/local/tomcat8.5.24/lib/servlet-api.jar
-all:${JAVAC} ${ALLSOURCE} $(CLASSPATH) 
+CLASSPATH =../lib/servlet-api.jar:../lib/mysql-connector-java-5.1.45-bin.jar
+ALLSOURCE = *.java
+
+all: 
+	${JAVAC} -classpath ${CLASSPATH} ${ALLSOURCE} 
 
 clean:
 	rm -rf *.class
