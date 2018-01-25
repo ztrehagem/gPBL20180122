@@ -1,7 +1,7 @@
 import java.sql.*;
 
 public class EmployeeInfo{
-  
+/*  
   public ResultSet execSql(String sql,ResultSet rset){
     Connection conn;
     Statement stmt;
@@ -24,9 +24,7 @@ public class EmployeeInfo{
     }
     return rset;
   }
+*/
+} 
 
-  public static <T> List<T> getAllData(String){
-       
-  }
-  
 

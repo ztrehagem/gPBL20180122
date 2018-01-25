@@ -28,14 +28,14 @@ public class EmployeePersonaldata{
     public String getAddress(){
       return this.address;
     }
-    public static list<EmployeePersonaldata> getAllEmployeeData()
+    /*public static list<EmployeePersonaldata> getAllEmployeeData()
     {
       
     }
 
     public void execSql(String sql,ResultSet rset){
 
-    }
+    }*/
     public void setDataFromId() {
         Connection conn;
         Statement stmt;
@@ -43,9 +43,9 @@ public class EmployeePersonaldata{
         try{
           Class.forName("com.mysql.jdbc.Driver").newInstance();
           conn = DriverManager.getConnection(
-          "jdbc:mysql://db/employee","test","password");
+          "jdbc:mysql://db/test","root","");
           stmt = conn.createStatement();
-          sql ="select * from employee_personaldata where employee_id="+this.employee_id;
+          sql ="select * from employee where id="+this.employee_id;
           ResultSet rset = stmt.executeQuery(sql); 
           while(rset.next()){
           //set data
@@ -63,8 +63,7 @@ public class EmployeePersonaldata{
           }
         }
     } 
-
- public static    
+}
 /*
     
     public static void save() throws SQLException { 
@@ -79,7 +78,7 @@ public class EmployeePersonaldata{
             stat.setString(1, this.employee_id);
             stat.setString(2, this.birthday);
             stat.setString(3,this.address);
-            stat.execute();  */
+            stat.execute();  
             String sql =
             "load data infile 'employee_personaldata.csv' \n" +
             "replace \n" +
@@ -103,4 +102,3 @@ public class EmployeePersonaldata{
             }
         }
     }*/
-}
