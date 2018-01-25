@@ -8,8 +8,9 @@
         input-box._ml-10(type="number" placeholder="0000" v-model="id")
       submit-button._ml-10(:disabled="this.submitting")
   hr
+  div {{this.response}}
+  hr
   graph-box(:graph-data="graphData")
-  //- div {{this.response}}
 </template>
 
 <script>
@@ -65,6 +66,7 @@ export default {
       if (error) {
         console.error(error);
       } else {
+        this.response = xml;
         // this.graphData = await xmlParser.parse(xml);
         this.graphData = mock;
       }
