@@ -5,17 +5,17 @@
   form.form(@submit.prevent="submit")
     div
       label ID
-        input-box._ml-10(type="number" placeholder="00000" v-model="id")
-    div
-      submit-button
+        input-box._ml-10(type="number" placeholder="0000" v-model="id")
+      submit-button._ml-10(:disabled="this.submitting")
   hr
   div {{this.response}}
 </template>
 
 <script>
-import axios from 'axios';
+import xml2js from 'xml2js';
 import InputBox from './input-box.vue';
 import SubmitButton from './submit-button.vue';
+import * as api from '../modules/api';
 
 export default {
   components: {
@@ -24,19 +24,19 @@ export default {
   },
   data: () => ({
     submitting: false,
-    id: 2,
+    id: 6338,
     response: "",
   }),
   methods: {
     async submit() {
       this.submitting = true;
-      console.log('request to get about', this.id);
-      try {
-        const { data } = await axios.get(`/hello?id=${this.id}`);
-        this.response = data;
-      } catch (e) {
-        this.response = e.response.data;
+      const [error, xml] = await api.get(this.id);
+      if (error) {
+        console.error(error);
+      } else {
+        console.log(xml);
       }
+      this.submitting = false;
     },
   },
 }

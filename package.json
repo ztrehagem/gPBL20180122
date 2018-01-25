@@ -79,6 +79,7 @@
     "vinyl-source-stream": "^2.0.0",
     "vue": "^2.5.13",
     "vueify": "^9.4.1",
-    "watchify": "^3.9.0"
+    "watchify": "^3.9.0",
+    "xml2js": "^0.4.19"
   }
 }
