@@ -1,4 +1,5 @@
 node_modules/
+webapp/ROOT/**/*.class
 webapp/ROOT/**/*.html
 webapp/ROOT/**/*.css
 webapp/ROOT/**/*.js
