@@ -12,10 +12,10 @@
 </template>
 
 <script>
-import xml2js from 'xml2js';
 import InputBox from './input-box.vue';
 import SubmitButton from './submit-button.vue';
 import * as api from '../modules/api';
+import * as xmlParser from '../modules/xml-parser';
 
 export default {
   components: {
@@ -34,7 +34,8 @@ export default {
       if (error) {
         console.error(error);
       } else {
-        console.log(xml);
+        const obj = await xmlParser.parse(xml);
+        console.log(obj);
       }
       this.submitting = false;
     },

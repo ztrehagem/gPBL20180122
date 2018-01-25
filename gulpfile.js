@@ -77,7 +77,7 @@ gulp.task('js', () => {
   });
 
   const bundle = () => {
-    log('bundling...');
+    log('building...');
     return bundler.bundle()
       .on('error', (error) => {
         log('js bundle error');
