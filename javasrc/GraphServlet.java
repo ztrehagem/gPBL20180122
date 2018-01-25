@@ -1,3 +1,4 @@
+import bean.AgeGroup;
 import bean.PersonalData;
 import java.io.*;
 import javax.servlet.*;
@@ -6,7 +7,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EmployeeServlet extends HttpServlet{
+public class GraphServlet extends HttpServlet{
   public void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException,IOException{
     request.setCharacterEncoding("UTF-8");
@@ -30,9 +31,26 @@ public class EmployeeServlet extends HttpServlet{
          if (pd.getId()!=0) pdlist.add(pd);
        }
        sc.close();
-
-       request.setAttribute("pdlist",pdlist);
-       RequestDispatcher dispatch = request.getRequestDispatcher("/jsp/employee.jsp");
+       List<AgeGroup> aglist = new ArrayList<AgeGroup>();
+       AgeGroup young = new AgeGroup("under20",
+       pdlist.stream().filter(d -> d.getAge() < 20).count(),
+          3
+        );
+       AgeGroup middle = new AgeGroup(
+           "age20_30",
+            pdlist.stream().filter(d -> 20 <= d.getAge() && d.getAge() < 30).count(), //sample
+            3
+       );
+       AgeGroup old = new AgeGroup(
+           "over30",
+            pdlist.stream().filter(d -> 30 <= d.getAge() ).count(),
+            3
+       );
+       aglist.add(young);
+       aglist.add(middle);
+       aglist.add(old);
+       request.setAttribute("aglist",aglist);
+       RequestDispatcher dispatch = request.getRequestDispatcher("/jsp/group.jsp");
        dispatch.include(request,response);
     }catch(Exception e){
       e.printStackTrace();
