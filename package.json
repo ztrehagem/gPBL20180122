@@ -73,6 +73,7 @@
     "gulp-sourcemaps": "^2.6.3",
     "gulp-stylus": "^2.7.0",
     "gulp-uglify": "^3.0.0",
+    "highcharts": "^6.0.4",
     "mysql": "^2.15.0",
     "transform-runtime": "0.0.0",
     "vinyl-buffer": "^1.0.1",

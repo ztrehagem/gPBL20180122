@@ -1,6 +1,6 @@
 <template lang="pug">
 .vue-app-root
-  h1.title The Application
+  h1.title GPBL 20180122 Application
   hr
   form.form(@submit.prevent="submit")
     div
@@ -8,24 +8,55 @@
         input-box._ml-10(type="number" placeholder="0000" v-model="id")
       submit-button._ml-10(:disabled="this.submitting")
   hr
-  div {{this.response}}
+  graph-box(:graph-data="graphData")
+  //- div {{this.response}}
 </template>
 
 <script>
 import InputBox from './input-box.vue';
 import SubmitButton from './submit-button.vue';
+import GraphBox from './graph-box.vue';
 import * as api from '../modules/api';
 import * as xmlParser from '../modules/xml-parser';
+
+const mock = [
+  {
+    range: 'under 19',
+    number: 20,
+    predicted: 10,
+  }, {
+    range: '20-29',
+    number: 100,
+    predicted: 30,
+  }, {
+    range: '30-39',
+    number: 80,
+    predicted: 10,
+  }, {
+    range: '40-49',
+    number: 65,
+    predicted: 37,
+  }, {
+    range: '50-59',
+    number: 30,
+    predicted: 20,
+  }, {
+    range: '60+',
+    number: 10,
+    predicted: 10,
+  },
+];
 
 export default {
   components: {
     InputBox,
     SubmitButton,
+    GraphBox,
   },
   data: () => ({
     submitting: false,
     id: 6338,
-    response: "",
+    // response: "",
   }),
   methods: {
     async submit() {
@@ -34,8 +65,8 @@ export default {
       if (error) {
         console.error(error);
       } else {
-        const obj = await xmlParser.parse(xml);
-        console.log(obj);
+        // this.graphData = await xmlParser.parse(xml);
+        this.graphData = mock;
       }
       this.submitting = false;
     },
@@ -55,10 +86,6 @@ export default {
 
   > .form {
     padding: 1rem;
-
-    > * {
-      margin-bottom: 1rem;
-    }
   }
 }
 </style>
