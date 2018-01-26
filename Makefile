@@ -7,4 +7,4 @@ all:
 	${JAVAC} -classpath ${CLASSPATH} ${ALLSOURCE} -d ${SAVEPATH}
 
 clean:
-	find ${SAVEPATH} -name '*.class' -delete
+	rm -rf ${SAVEPATH}/*
