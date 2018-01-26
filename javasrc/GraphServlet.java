@@ -38,7 +38,7 @@ public class GraphServlet extends HttpServlet{
        );
        AgeGroup young = new AgeGroup(
             "under20",
-            pdlist.stream().filter(d -> d.getAge() < 20).count(),
+            pdlist.stream().filter(d -> 0 < d.getAge() && d.getAge() < 20).count(),
             3//test
 
         );
