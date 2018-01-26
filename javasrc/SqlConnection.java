@@ -20,7 +20,6 @@ public class SqlConnection{
       e.printStackTrace();
     }
   }
-
   public void close() throws SQLException{
     this.conn.close();
     this.stmt.close();

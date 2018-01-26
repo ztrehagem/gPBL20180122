@@ -8,7 +8,6 @@ public class AgeGroup{
         this.sum = sum;
         this.quitn = quitn;
     }
-
     public String getRange(){
       return this.range;
     }
