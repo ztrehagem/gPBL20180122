@@ -5,12 +5,62 @@ PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
 
 <web-app>
   <servlet>
-    <servlet-name>hello</servlet-name>
+    <servlet-name>empl</servlet-name>
     <servlet-class>EmployeeServlet</servlet-class>
   </servlet>
 
   <servlet-mapping>
-    <servlet-name>hello</servlet-name>
-    <url-pattern>/hello</url-pattern>
-  </servlet-mapping> 
+    <servlet-name>empl</servlet-name>
+    <url-pattern>/EmployeeServlet</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>old</servlet-name>
+    <servlet-class>OldEmployeeServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>old</servlet-name>
+    <url-pattern>/old</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>middle</servlet-name>
+    <servlet-class>MiddleEmployeeServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>middle</servlet-name>
+    <url-pattern>/mid</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>young</servlet-name>
+    <servlet-class>YoungEmployeeServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>young</servlet-name>
+    <url-pattern>/young</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>all</servlet-name>
+    <servlet-class>AllEmployeeServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>all</servlet-name>
+    <url-pattern>/all</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>graph</servlet-name>
+    <servlet-class>GraphServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>graph</servlet-name>
+    <url-pattern>/graph</url-pattern>
+  </servlet-mapping>
 </web-app>
