@@ -5,7 +5,7 @@ import java.time.*;
 
 public class PersonalData{
 
-    private int  id; // String?
+    private int  id; 
     private int  age;
     private String address;
     private boolean quit;

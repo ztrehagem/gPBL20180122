@@ -12,15 +12,12 @@ public class GraphServlet extends HttpServlet{
     throws ServletException,IOException{
     request.setCharacterEncoding("UTF-8");
     response.setContentType("text/html; charset=UTF-8");
-    //String idStr = request.getParameter("id");
-    //String sql = (String) request.getAttribute("sql");//change
     String sql = "select * from employee";
     List<PersonalData> pdlist = new ArrayList<PersonalData>();
     try{
       SqlConnection sc = new SqlConnection();
       sc.execSql(sql);
       ResultSet rset = sc.getResultSet();
-
       while(rset.next()){
          PersonalData pd = new PersonalData(
              rset.getInt(1),
@@ -38,7 +35,7 @@ public class GraphServlet extends HttpServlet{
         );
        AgeGroup middle = new AgeGroup(
            "age20_30",
-            pdlist.stream().filter(d -> 20 <= d.getAge() && d.getAge() < 30).count(), //sample
+            pdlist.stream().filter(d -> 20 <= d.getAge() && d.getAge() < 30).count(),
             3
        );
        AgeGroup old = new AgeGroup(
