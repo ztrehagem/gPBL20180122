@@ -1,6 +1,6 @@
 <template lang="pug">
 .graph-box
-  #graph-container no data
+  #graph-container loading...
 </template>
 
 <script>
@@ -11,8 +11,8 @@ export default {
     graphData: { default: null },
   },
   watch: {
-    graphData(data) {
-      console.log(data);
+    graphData({ root: { group: groups } }) {
+      console.log(groups);
       Highcharts.chart('graph-container', {
         chart: {
           type: 'column',
@@ -21,7 +21,7 @@ export default {
           text: 'Result',
         },
         xAxis: {
-          categories: data.map(group => group.range),
+          categories: groups.map(group => group.range),
         },
         yAxis: {
           min: 0,
@@ -61,11 +61,11 @@ export default {
           }
         },
         series: [{
-          name: 'no potential',
-          data: data.map(group => group.number - group.predicted),
+          name: 'normal',
+          data: groups.map(group => group.sum - group.quit),
         }, {
-          name: 'potentials of retirement',
-          data: data.map(group => group.predicted),
+          name: 'quit',
+          data: groups.map(group => parseInt(group.quit)),
         }]
       })
     },
