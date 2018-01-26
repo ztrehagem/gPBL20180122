@@ -11,7 +11,7 @@ public class AllEmployeeServlet extends HttpServlet{
     try{
       request.setCharacterEncoding("UTF-8");
       response.setContentType("text/html; charset=UTF-8");
-      String sql = "select * from employee";
+      String sql = "select * from employee where not exists(select * from retirement where employee.id = retirement.id)";
       request.setAttribute("sql",sql);
       RequestDispatcher dispatch = request.getRequestDispatcher("/EmployeeServlet");
       dispatch.forward(request,response);
@@ -20,5 +20,3 @@ public class AllEmployeeServlet extends HttpServlet{
     }
   }
 }
-
-  

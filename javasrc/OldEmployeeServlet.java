@@ -11,7 +11,7 @@ public class OldEmployeeServlet extends HttpServlet{
     try{
       request.setCharacterEncoding("UTF-8");
       response.setContentType("text/html; charset=UTF-8");
-      String sql = "select * from employee where '1988-01-29' >= birthday";
+      String sql = "select * from employee where not exists(select * from retirement where employee.id = retirement.id) and '1988-01-29' >= birthday";
       request.setAttribute("sql",sql);
       RequestDispatcher dispatch = request.getRequestDispatcher("/EmployeeServlet");
       dispatch.forward(request,response);

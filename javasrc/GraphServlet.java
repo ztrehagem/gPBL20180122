@@ -12,7 +12,7 @@ public class GraphServlet extends HttpServlet{
     throws ServletException,IOException{
     request.setCharacterEncoding("UTF-8");
     response.setContentType("text/html; charset=UTF-8");
-    String sql = "select * from employee";
+    String sql = "select * from employee where not exists(select * from retirement where employee.id = retirement.id)";
     List<PersonalData> pdlist = new ArrayList<PersonalData>();
     try{
       SqlConnection sc = new SqlConnection();
@@ -31,6 +31,11 @@ public class GraphServlet extends HttpServlet{
        List<AgeGroup> aglist = new ArrayList<AgeGroup>();
 
        //とりあえずそれぞれ全部入れて動作確認あとで直す.
+       AgeGroup all = new AgeGroup(
+           "all",
+           pdlist.size(),
+           93
+       );
        AgeGroup young = new AgeGroup(
             "under20",
             pdlist.stream().filter(d -> d.getAge() < 20).count(),
@@ -47,11 +52,7 @@ public class GraphServlet extends HttpServlet{
             pdlist.stream().filter(d -> 30 <= d.getAge() ).count(),
             30
        );
-       AgeGroup all = new AgeGroup(
-           "all",
-           pdlist.size(),
-           93
-       );
+
 
        aglist.add(young);
        aglist.add(middle);

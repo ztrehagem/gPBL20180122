@@ -12,13 +12,13 @@ public class YoungEmployeeServlet extends HttpServlet{
     try{
       request.setCharacterEncoding("UTF-8");
       response.setContentType("text/html; charset=UTF-8");
-      String sql = "select * from employee where '1998-01-29' < birthday";
+      String sql = "select * from employee where not exists(select * from retirement where employee.id = retirement.id) AND '1997-01-29' < birthday";
       request.setAttribute("sql",sql);
       RequestDispatcher dispatch = request.getRequestDispatcher("/EmployeeServlet");
       dispatch.forward(request,response);
     }catch(Exception e){
       e.printStackTrace();
     }
-    
+
   }
 }
